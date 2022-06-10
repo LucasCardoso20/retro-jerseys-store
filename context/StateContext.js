@@ -11,6 +11,7 @@ export const StateContext = ({children}) => {
     const [totalPrice, setTotalPrice] = useState(0)
     const [totalQuantities, setTotalQuantities] = useState(0)
     const [qty, setQty] = useState(1)
+    const [size, setSize] = useState('P')
 
     let foundProduct;
     let index;
@@ -80,6 +81,10 @@ export const StateContext = ({children}) => {
         })
     }
 
+    const handleSize = (e) => {
+        setSize(e.target.value)
+    }
+
     return (
         <Context.Provider value={{
             showCart,
@@ -93,6 +98,9 @@ export const StateContext = ({children}) => {
             setShowCart,
             toggleCartItemQuantity,
             onRemove,
+            size,
+            setSize,
+            handleSize,
         }}>
             {children}
         </Context.Provider>

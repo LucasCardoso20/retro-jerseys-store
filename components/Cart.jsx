@@ -9,7 +9,7 @@ import { motion } from 'framer-motion'
 
 const Cart = () => {
   const cartRef = useRef();
-  const {totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove} = useStateContext()
+  const {totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove, size, setSize, handleSize} = useStateContext()
   return (
     <div className='cart-wrapper' ref={cartRef}>
       
@@ -54,6 +54,18 @@ const Cart = () => {
                     <h5>{item.name}</h5>
                     <h4>${item.price}</h4>
                   </div>
+
+                  <div className='size'>  
+                    <h3>Size:</h3> 
+                    <select value={size} onChange={handleSize}>
+                      {console.log(size)}
+                      <option>P</option>
+                      <option>M</option>
+                      <option>S</option>
+                      <option>X</option>
+                    </select>
+                  </div>
+
                   <div className="flex bottom">
                     <div>
                     <p className='quantity-desc'>

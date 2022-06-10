@@ -4,10 +4,12 @@ import {AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar} from 'react-ic
 import { Product } from '../../components'
 import { useStateContext } from '../../context/StateContext'
 
+
 const SingleProduct = ({product, products}) => {
   const {image, name, details, price} = product
   const [index, setIndex] = useState(0)
-  const {incQty, decQty, qty, onAdd} = useStateContext()
+  const {incQty, decQty, qty, onAdd, size, setSize, handleSize} = useStateContext()
+  
   
   return (
     <div>
@@ -50,7 +52,7 @@ const SingleProduct = ({product, products}) => {
                 <AiOutlineMinus/>
               </span>
 
-              <span className='num' onClick="">
+              <span className='num'>
                 {qty}
               </span>
 
@@ -59,6 +61,18 @@ const SingleProduct = ({product, products}) => {
               </span>
             </p>
           </div>
+
+          <div className='size'>  
+            <h3>Size:</h3> 
+            <select value={size} onChange={handleSize}>
+              {console.log(size)}
+              <option>P</option>
+              <option>M</option>
+              <option>S</option>
+              <option>X</option>
+            </select>
+          </div>
+
           <div className='buttons'>
             <button type='button' className='add-to-cart' onClick={()=> onAdd(product, qty)}>
               Add to Cart
